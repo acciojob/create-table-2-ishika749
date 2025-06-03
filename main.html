@@ -28,38 +28,28 @@
 
   <script>
     function createTable() {
-      // Prompt for rows
       const rnInput = prompt("Input number of rows");
       const rn = parseInt(rnInput, 10);
-
-      // Validate rows input
       if (isNaN(rn) || rn <= 0) {
         alert("Invalid input for number of rows. Must be a positive number.");
         return;
       }
 
-      // Prompt for columns
       const cnInput = prompt("Input number of columns");
       const cn = parseInt(cnInput, 10);
-
-      // Validate columns input
       if (isNaN(cn) || cn <= 0) {
         alert("Invalid input for number of columns. Must be a positive number.");
         return;
       }
 
-      // Get the table element
       const table = document.getElementById("myTable");
-
-      // Clear existing table content
       table.innerHTML = "";
 
-      // Build the table rows and columns
       for (let i = 0; i < rn; i++) {
         const row = document.createElement("tr");
         for (let j = 0; j < cn; j++) {
           const cell = document.createElement("td");
-          cell.textContent = Row-${i} Column-${j};
+          cell.textContent = `Row-${i} Column-${j}`;
           row.appendChild(cell);
         }
         table.appendChild(row);
@@ -68,4 +58,5 @@
   </script>
 </body>
 </html>
+
 

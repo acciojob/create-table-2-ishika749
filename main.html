@@ -1,25 +1,71 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create a table</title>
+  <style>
+    body {
+      margin: 30px;
+      font-family: sans-serif;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 600px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      padding: 8px 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <table id="myTable" border="1"></table>
+  <form>
+    <input type="button" onclick="createTable()" value="Create the table" />
+  </form>
 
-<html>
+  <script>
+    function createTable() {
+      // Prompt for rows
+      const rnInput = prompt("Input number of rows");
+      const rn = parseInt(rnInput, 10);
 
-	<head>
-		<meta charset=utf-8 /> 
-		<title>Create a table</title> 
-		<style type="text/css"> 
-			body {margin: 30px;} 	
-		</style>
-		<link rel="stylesheet" href="styles.css">
-	</head>
+      // Validate rows input
+      if (isNaN(rn) || rn <= 0) {
+        alert("Invalid input for number of rows. Must be a positive number.");
+        return;
+      }
 
-	<body>
-		<table id="myTable" border="1"> 
-		</table>
-		<form> 
-			<input type="button" onclick="createTable()" value="Create the table"> 
-		</form>
-		<script type="text/javascript" src="./script.js">
-	</script>
+      // Prompt for columns
+      const cnInput = prompt("Input number of columns");
+      const cn = parseInt(cnInput, 10);
 
-	</body>
+      // Validate columns input
+      if (isNaN(cn) || cn <= 0) {
+        alert("Invalid input for number of columns. Must be a positive number.");
+        return;
+      }
 
+      // Get the table element
+      const table = document.getElementById("myTable");
+
+      // Clear existing table content
+      table.innerHTML = "";
+
+      // Build the table rows and columns
+      for (let i = 0; i < rn; i++) {
+        const row = document.createElement("tr");
+        for (let j = 0; j < cn; j++) {
+          const cell = document.createElement("td");
+          cell.textContent = Row-${i} Column-${j};
+          row.appendChild(cell);
+        }
+        table.appendChild(row);
+      }
+    }
+  </script>
+</body>
 </html>
+
